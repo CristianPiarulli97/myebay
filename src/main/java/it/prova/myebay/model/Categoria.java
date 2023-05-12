@@ -1,5 +1,8 @@
 package it.prova.myebay.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,9 +28,16 @@ public class Categoria {
 	@Column(name = "codice")
 	private String codice;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "utente_id", nullable = false)
-	private Utente utente;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "categoria_annuncio", joinColumns = @JoinColumn(name = "categoria_id", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "annuncio_id", referencedColumnName = "ID"))
+	private Set<Annuncio> annunci = new HashSet<>();
+
+	
+	
+	public Categoria(Long id) {
+		super();
+		this.id = id;
+	}
 
 	public Categoria() {
 		super();
@@ -61,11 +73,14 @@ public class Categoria {
 		this.codice = codice;
 	}
 
-	public Utente getUtente() {
-		return utente;
+	public Set<Annuncio> getAnnunci() {
+		return annunci;
 	}
 
-	public void setUtente(Utente utente) {
-		this.utente = utente;
+	public void setAnnunci(Set<Annuncio> annunci) {
+		this.annunci = annunci;
 	}
+
+	
+	
 }

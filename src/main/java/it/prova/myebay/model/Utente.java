@@ -44,10 +44,10 @@ public class Utente {
 	@Column(name = "creditoresiduo")
 	private Double creditoResiduo;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utenteInserimento")
 	private Set<Annuncio> annunci = new HashSet<>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utenteAcquirente")
 	private Set<Acquisto> acquisti = new HashSet<>();
 
 	@ManyToMany
@@ -55,6 +55,18 @@ public class Utente {
 	private Set<Ruolo> ruoli = new HashSet<>(0);
 
 	public Utente() {
+	}
+
+
+	public Utente(Long id, String username, String password) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+	}
+
+	public Utente(Long id) {
+		this.id = id;
 	}
 
 	public Utente(String username, String password) {

@@ -26,6 +26,10 @@
 	      font-size: 3.5rem;
 	    }
 	  }
+	  
+	  body {
+  		background-color: #CCCCCC;
+}
 	</style>
 
 

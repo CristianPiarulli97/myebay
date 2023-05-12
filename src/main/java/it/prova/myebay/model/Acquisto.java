@@ -29,7 +29,7 @@ public class Acquisto {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utente_id", nullable = false)
-	private Utente utente;
+	private Utente utenteAcquirente;
 
 	public Acquisto() {
 		super();
@@ -74,10 +74,10 @@ public class Acquisto {
 	}
 
 	public Utente getUtente() {
-		return utente;
+		return utenteAcquirente;
 	}
 
 	public void setUtente(Utente utente) {
-		this.utente = utente;
+		this.utenteAcquirente = utente;
 	}
 }

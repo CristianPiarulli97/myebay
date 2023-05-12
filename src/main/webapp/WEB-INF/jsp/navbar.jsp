@@ -49,7 +49,7 @@
       <sec:authorize access="isAuthenticated()">
       <div class="col-md-3 text-end">
   				<p class="navbar-text">
-   					     <a href="${pageContext.request.contextPath}/resetPasswordController/prepareresetpassword">Cambia Password</a>
+   					     <a href="${pageContext.request.contextPath}/servletperaccedereadareapersonale">Area Personale</a>
   				</p>
 			</div>      
 	      <div class="col-md-3 text-end">
