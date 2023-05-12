@@ -17,11 +17,11 @@ public class AnnuncioController {
 
 	@Autowired
 	private AnnuncioService annuncioService;
+
 	
 	@PostMapping("/list")
-	public String listAnnuncio(AnnuncioDTO annuncioExample, ModelMap model) {
-		List<Annuncio> annunci = annuncioService.findByExample(annuncioExample.buildAnnuncioModel(true, true));
-		model.addAttribute("annuncio_list_attribute", AnnuncioDTO.createAnnuncioDTOListFromModelList(annunci, true, false));
+	public String listAnnunci (AnnuncioDTO annuncioExample, ModelMap model) {
+		model.addAttribute("annuncio_list_attr",AnnuncioDTO.createAnnuncioDTOListFromModelList(annuncioService.findByExample(annuncioExample.buildAnnuncioModel(true, true)), true));
 		return "annuncio/list";
 	}
 }

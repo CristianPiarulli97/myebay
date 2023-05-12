@@ -44,10 +44,10 @@ public class Utente {
 	@Column(name = "creditoresiduo")
 	private Double creditoResiduo;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utenteInserimento")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
 	private Set<Annuncio> annunci = new HashSet<>();
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utenteAcquirente")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
 	private Set<Acquisto> acquisti = new HashSet<>();
 
 	@ManyToMany

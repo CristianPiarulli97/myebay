@@ -64,7 +64,7 @@
 						ricondizionato da negozi e venditori privati. Compra e vendi
 						elettronica, videogiochi, collezionismo, ...</p>
 						<br>
-					<form method="post" action="/annuncio/list" class="row g-3">
+					<form method="post" action="${pageContext.request.contextPath}/annuncio/list" class="row g-3">
 							
 								<div class="col-md-6">
 									<label for="testo" class="form-label">Articolo</label>
