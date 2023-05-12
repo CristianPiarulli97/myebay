@@ -7,7 +7,7 @@
 		<!-- Custom styles per le features di bootstrap 'Columns with icons' -->
 	   <link href="${pageContext.request.contextPath}/assets/css/features.css" rel="stylesheet">
 	   
-	   <title>Raccolta Film</title>
+	   <title>My Ebay</title>
 	 </head>
 	   <body class="d-flex flex-column h-100">
 	   		
@@ -50,10 +50,10 @@
 			    
 			     <div class="p-5 mb-4 bg-light rounded-3">
 				      <div class="container-fluid py-5">
-				        <h1 class="display-5 fw-bold">Benvenuto alla Raccolta Film</h1>
-				        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. </p>
-				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/regista/search">Vai a Ricerca</a>
-				        <button id="myButton" >Clicca qui</button>
+				        <h1 class="display-5 fw-bold">Benvenuto in MyEbay !! </h1>
+				        <p class="col-md-8 fs-4">Offerte imperdibili su nuovo, usato e ricondizionato da negozi e venditori privati. Compra e vendi elettronica, videogiochi, collezionismo, ... </p>
+				        <a class="btn btn-danger btn-lg" href="${pageContext.request.contextPath}/regista/search">Ricerca Annunci</a>
+				        
 				      </div>
 			    </div>
 			    

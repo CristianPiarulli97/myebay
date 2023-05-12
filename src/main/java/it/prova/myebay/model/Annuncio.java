@@ -9,35 +9,100 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "utente")
+@Table(name = "annuncio")
 public class Annuncio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-	
-	@Column(name = "testo")
-	private String testo;
-	
+	@Column(name = "testoannuncio")
+	private String testoAnnuncio;
 	@Column(name = "prezzo")
-	private Integer prezzo;
-	
-	@Column(name = "data")
-	private LocalDate data;
-	
+	private Double prezzo;
+	@Column(name = "datacreazione")
+	private LocalDate dataCreazione;
 	@Column(name = "aperto")
 	private boolean aperto;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria")
-	private Categoria categoria;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utente_id", nullable = false)
-	private Utente utenteInserimento;
-	
+	private Utente utente;
+
+	public Annuncio() {
+		super();
+	}
+
+	public Annuncio(String testoAnnuncio, Double prezzo) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+	}
+
+	public Annuncio(String testoAnnuncio, Double prezzo, LocalDate dataCreazione) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+		this.dataCreazione = dataCreazione;
+	}
+
+	public Annuncio(String testoAnnuncio, Double prezzo, LocalDate dataCreazione, boolean aperto) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+		this.dataCreazione = dataCreazione;
+		this.aperto = aperto;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getTestoAnnuncio() {
+		return testoAnnuncio;
+	}
+
+	public void setTestoAnnuncio(String testoAnnuncio) {
+		this.testoAnnuncio = testoAnnuncio;
+	}
+
+	public Double getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(Double prezzo) {
+		this.prezzo = prezzo;
+	}
+
+	public LocalDate getDataCreazione() {
+		return dataCreazione;
+	}
+
+	public void setDataCreazione(LocalDate dataCreazione) {
+		this.dataCreazione = dataCreazione;
+	}
+
+	public boolean isAperto() {
+		return aperto;
+	}
+
+	public void setAperto(boolean aperto) {
+		this.aperto = aperto;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
 }

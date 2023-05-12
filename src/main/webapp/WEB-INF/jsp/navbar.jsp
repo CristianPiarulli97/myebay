@@ -1,7 +1,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <header>
   <!-- Fixed navbar -->
- <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Eighth navbar example">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-danger" aria-label="Eighth navbar example">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,14 +38,20 @@
 		      </li>
 		   </sec:authorize>
         </ul>
+        
+        <div class="col-md-3 text-end">
+  				<p class="navbar-text">
+   					     <a href="${pageContext.request.contextPath}/login">Login (accedi)</a>
+  				</p>
+			</div>
+        
       </div>
       <sec:authorize access="isAuthenticated()">
       <div class="col-md-3 text-end">
   				<p class="navbar-text">
    					     <a href="${pageContext.request.contextPath}/resetPasswordController/prepareresetpassword">Cambia Password</a>
   				</p>
-			</div>
-      
+			</div>      
 	      <div class="col-md-3 text-end">
 	        <p class="navbar-text">Utente: <sec:authentication property="name"/> (${userInfo.nome } ${userInfo.cognome })
 	    	 <a href="${pageContext.request.contextPath}/logout">Logout</a>    	 
