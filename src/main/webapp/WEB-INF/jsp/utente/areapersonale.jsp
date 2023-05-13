@@ -52,57 +52,7 @@
 	<main class="flex-shrink-0">
 		<div class="container">
 
-			<div
-				class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none':'' }"
-				role="alert">
-				${errorMessage}
-				<button type="button" class="btn-close" data-bs-dismiss="alert"
-					aria-label="Close"></button>
-			</div>
-
-			<div class="p-5 mb-4 bg-light rounded-3">
-				<div class="container-fluid py-5">
-					<h1 class="display-5 fw-bold">Benvenuto in MyEbay !!</h1>
-					<p class="col-md-8 fs-4">Offerte imperdibili su nuovo, usato e
-						ricondizionato da negozi e venditori privati. Compra e vendi
-						elettronica, videogiochi, collezionismo, ...</p>
-						<br>
-					<form method="post" action="${pageContext.request.contextPath}/annuncio/list" class="row g-3">
-							
-								<div class="col-md-6">
-									<label for="testo" class="form-label">Annuncio</label>
-									<input type="text" name="testo" id="testo" class="form-control" placeholder="Inserire il nome dell'aannuncio da cercare" >
-								</div>
-									
-								
-								<div class="col-md-6">
-									<label for="minutiDurata" class="form-label">Prezzo (A partire da ) </label>
-									<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire il prezzo" >
-								</div>
-								
-							<div class="col-md-6 form-check" id="categorieDivId">
-									<p>Categorie:</p>
-									
-									<c:forEach items="${categorie_totali_attr}" var="item">
-							         	 <div>
-									      <input type="checkbox" id="${item.codice}" name="categorieIds" value="${item.codice}" />
-									      <label for="${item.codice}">${item.descrizione}</label>
-									    </div>
-							        </c:forEach>
-								</div>
-									
-								<div class="col-12">
-									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-danger">Cerca annuncio</button>
-									<input class="btn btn-outline-warning" type="reset" value="Ripulisci">
-									<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath }/film/insert">Metti in vendita un articolo</a>
-								</div>
-								
-							</form>
-		
-				</div>
-			</div>
-
-		</div>
+			
 
 		<!--  features di bootstrap 'Columns with icons'  -->
 		<div class="container px-4 py-5" id="featured-3">

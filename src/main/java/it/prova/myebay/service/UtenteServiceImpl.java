@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -110,5 +112,22 @@ public class UtenteServiceImpl implements UtenteService {
 		return repository.findByUsername(username).orElse(null);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public boolean isAutenticato() {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null) {
+
+			Utente utenteInstance = repository.findByUsername(auth.getName()).orElse(null);
+			if (utenteInstance == null) {
+				return false;
+			}
+
+			return utenteInstance.getRuoli().size() > 0;
+
+		}
+		return false;
+	}
 	
 }

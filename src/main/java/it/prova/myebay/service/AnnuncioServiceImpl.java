@@ -52,8 +52,12 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 	
 	@Transactional(readOnly = true)
 	public List<Annuncio> findByExample(Annuncio example) {
-		// da implementare
-				return this.listAllElements();
+		return repository.findByExampleRicerca(example);
+	}
+
+	@Transactional(readOnly = true)
+	public Annuncio caricaSingoloElementoConCategorie(Long id) {
+		return repository.findByIdConCategorie(id).orElse(null);
 	}
 
 	
