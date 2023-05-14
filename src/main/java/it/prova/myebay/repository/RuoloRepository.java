@@ -6,5 +6,5 @@ import it.prova.myebay.model.Ruolo;
 
 public interface RuoloRepository extends CrudRepository<Ruolo,Long>{
 
-	// Ruolo fyndByDescrizioneAndCodice(String descrizione,String codice);
+	Ruolo findByDescrizioneAndCodice(String descrizione, String codice);
 }

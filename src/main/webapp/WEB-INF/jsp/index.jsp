@@ -71,7 +71,7 @@
 							
 								<div class="col-md-6">
 									<label for="testo" class="form-label">Annuncio</label>
-									<input type="text" name="testo" id="testo" class="form-control" placeholder="Inserire il nome dell'aannuncio da cercare" >
+									<input type="text" name="testo" id="testo" class="form-control" placeholder="Inserire il nome dell'annuncio da cercare" >
 								</div>
 									
 								

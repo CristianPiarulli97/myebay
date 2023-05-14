@@ -43,16 +43,11 @@ public class RuoloServiceImpl implements RuoloService {
 
 	}
 
-	@Override
+
+
+	@Transactional(readOnly = true)
 	public Ruolo cercaPerDescrizioneECodice(String descrizione, String codice) {
-		// TODO Auto-generated method stub
-		return null;
+		return ruoloRepository.findByDescrizioneAndCodice(descrizione, codice);
 	}
-
-//	@Transactional(readOnly = true)
-//	public Ruolo cercaPerDescrizioneECodice(String descrizione, String codice) {
-//		return ruoloRepository.fyndByDescrizioneAndCodice(descrizione, codice);
-//	}
-
 
 }

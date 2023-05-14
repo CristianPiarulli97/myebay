@@ -18,9 +18,13 @@ public interface AnnuncioService {
 
 	public void rimuovi(Long idAnnuncioToDelete);
 
-	public List<Annuncio> findByExample(Annuncio example);
+	public List<Annuncio> findByExampleRicerca(Annuncio example);
 
 
 	public Annuncio caricaSingoloElementoConCategorie(Long idAnnuncio);
+
+	public Annuncio caricaElementoConUtente(Long id);
+
+	List<Annuncio> gestioneAnnunci(String username);
 
 }

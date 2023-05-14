@@ -1,5 +1,6 @@
 package it.prova.myebay.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
@@ -12,5 +13,9 @@ public interface AnnuncioRepository extends CrudRepository<Annuncio, Long> , Cus
 	@Query("from Annuncio a left join fetch a.categorie where a.id = ?1")
 	Optional<Annuncio> findByIdConCategorie(Long id);
 
-	
+	@Query("from Annuncio a left join fetch a.utente u where a.id = ?1")
+	Optional<Annuncio> findByIdConUtente(Long id);
+
+	@Query("from Annuncio a join fetch a.utente u where u.username like ?1")
+	List<Annuncio> findAllByUtente_Username(String username);
 }

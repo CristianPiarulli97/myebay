@@ -48,4 +48,5 @@ public class CustomAnnuncioRepositoryImpl implements CustomAnnuncioRepository {
 
 		return typedQuery.getResultList();
 	}
+	
 }

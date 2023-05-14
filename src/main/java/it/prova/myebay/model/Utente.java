@@ -41,6 +41,7 @@ public class Utente {
 	// se non uso questa annotation viene gestito come un intero
 	@Enumerated(EnumType.STRING)
 	private StatoUtente stato;
+	
 	@Column(name = "creditoresiduo")
 	private Double creditoResiduo;
 
@@ -55,6 +56,36 @@ public class Utente {
 	private Set<Ruolo> ruoli = new HashSet<>(0);
 
 	public Utente() {
+	}
+
+
+	public Double getCreditoResiduo() {
+		return creditoResiduo;
+	}
+
+
+	public void setCreditoResiduo(Double creditoResiduo) {
+		this.creditoResiduo = creditoResiduo;
+	}
+
+
+	public Set<Annuncio> getAnnunci() {
+		return annunci;
+	}
+
+
+	public void setAnnunci(Set<Annuncio> annunci) {
+		this.annunci = annunci;
+	}
+
+
+	public Set<Acquisto> getAcquisti() {
+		return acquisti;
+	}
+
+
+	public void setAcquisti(Set<Acquisto> acquisti) {
+		this.acquisti = acquisti;
 	}
 
 
