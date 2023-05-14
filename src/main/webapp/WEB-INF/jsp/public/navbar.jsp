@@ -35,11 +35,7 @@
 		   </sec:authorize>
         </ul>
         
-        <div class="col-md-3 text-end">
-  				<p class="navbar-text">
-   					     <a href="${pageContext.request.contextPath}/login">Login (accedi)</a>
-  				</p>
-			</div>
+    
         
       </div>
       <sec:authorize access="isAuthenticated()">

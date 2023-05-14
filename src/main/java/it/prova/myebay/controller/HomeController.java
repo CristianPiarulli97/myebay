@@ -21,4 +21,10 @@ public class HomeController {
 		return "index";
 	}
 
+	@RequestMapping(value = { "/areapersonale", "" })
+	public String areaPersonale(Model model) {
+	//	model.addAttribute("categorie_totali_attr",
+	//			CategoriaDTO.createCategoriaDTOListFromModelList(categoriaService.listAll()));
+		return "areapersonale";
+	}
 }

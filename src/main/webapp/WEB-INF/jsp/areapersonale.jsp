@@ -62,10 +62,9 @@
 						<svg class="bi" width="1em" height="1em">
 							<use xlink:href="#collection" /></svg>
 					</div>
-					<h2>Ricerca Registi</h2>
-					<p>Paragraph of text beneath the heading to explain the
-						heading. We'll add onto it with another sentence and probably just
-						keep going until we run out of words.</p>
+					<h2>Visualizza Acquisti</h2>
+					<p>Se selezioni questa opzione,
+					 MyEbay mostra i dettagli relativi agli acquisti effettuati. Inoltre, MyEbay ti avviserà</p>
 					<a href="${pageContext.request.contextPath}/regista/search"
 						class="icon-link"> Vai alla funzionalità <svg class="bi"
 							width="1em" height="1em">
@@ -77,10 +76,8 @@
 						<svg class="bi" width="1em" height="1em">
 							<use xlink:href="#people-circle" /></svg>
 					</div>
-					<h2>Inserisci Nuovo Regista</h2>
-					<p>Paragraph of text beneath the heading to explain the
-						heading. We'll add onto it with another sentence and probably just
-						keep going until we run out of words.</p>
+					<h2>Gestione Annunci</h2>
+					<p>Accedendo in questa area puoi gestire i tuoi annunci.</p>
 					<a href="${pageContext.request.contextPath}/regista/insert"
 						class="icon-link"> Vai alla funzionalità <svg class="bi"
 							width="1em" height="1em">
@@ -92,10 +89,8 @@
 						<svg class="bi" width="1em" height="1em">
 							<use xlink:href="#toggles2" /></svg>
 					</div>
-					<h2>Ricerca Film</h2>
-					<p>Paragraph of text beneath the heading to explain the
-						heading. We'll add onto it with another sentence and probably just
-						keep going until we run out of words.</p>
+					<h2>Gestione Utenti (per utenti admin)</h2>
+					<p>Per gli utenti admin è possibile accere in questa area per gestire i profili registrati</p>
 					<a href="${pageContext.request.contextPath}/film/search"
 						class="icon-link"> Vai alla funzionalità <svg class="bi"
 							width="1em" height="1em">

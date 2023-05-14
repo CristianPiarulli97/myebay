@@ -28,30 +28,32 @@
 			  	<img class="mb-4" src="./assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
 				<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 		    	
-		    	<div class="row justify-content-md-center">
-			  	<div class="col align-self-center" >
-			      <input type="text" name="username" class="form-control" id="myInput" placeholder="username">
-			      <label for="username"></label>
+		    	
+			  	<div class="form-floating">
+			      <input type="text" name="username" class="form-control" id="inputUsername" placeholder="username">
+			      <label for="inputUsername">Username</label>
 			    </div>
-			    </div>
-			    <div class="row justify-content-md-center">
-			  	<div class="col align-self-center" >
-			      <input type="password" name="password" class="form-control" id="myInput" placeholder="password">
+			    <div class="form-floating">
+			      <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
 			      <label for="inputPassword">Password</label>
-			    </div>
 			    </div>
 			
 			    <div class="checkbox mb-3">
 			      <label>
-			        <input type="checkbox" value="remember-me"> Remember me
+			        <input type="checkbox" value="remember-me"> Ricordami
 			      </label>
 			    </div>
-			    <button class="w-100 btn btn-lg btn-primary" type="submit" id="myButton" >ACCEDI</button>
+			    
+			    <button class="w-50 btn btn-lg btn-primary" type="submit">Accedi</button>
+			    <a class="w-45 btn btn-outline-primary btn-lg" href="${pageContext.request.contextPath}/utente/registrati">Registrati</a>
+			    </form>
+			    
+			    <a class="btn btn-outline-secondary btn-md" href="${pageContext.request.contextPath}/home">Torna a MyEbay</a>
 			    <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
 			  
 			  
 			  
-			</form>
+			
 		</main>
 	</body>
 </html>
