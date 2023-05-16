@@ -38,7 +38,7 @@
 	   
 	   
 	   		<!-- Fixed navbar -->
-	   		<jsp:include page="../navbar.jsp"></jsp:include>
+	   		<jsp:include page="./navbar.jsp"></jsp:include>
 	    
 			
 			<!-- Begin page content -->
@@ -55,9 +55,11 @@
 			    
 			     <div class="p-5 mb-4 bg-light rounded-3">
 				      <div class="container-fluid py-5">
-				        <h1 class="display-5 fw-bold">Bentornato ${userInfo.nome}</h1>
-				        <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. </p>
-				        <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/annuncio/search">Vai a Ricerca</a>
+				        <h1 class="display-5 fw-bold">Bentornato  ${userInfo.nome}</h1>
+				        <p class="col-md-8 fs-4">Offerte imperdibili su nuovo, usato e
+						ricondizionato da negozi e venditori privati. Compra e vendi
+						elettronica, videogiochi, collezionismo, ... </p>
+				        <a class="btn btn-danger btn-lg" href="${pageContext.request.contextPath}/annuncio/search">Vai a Ricerca</a>
 				      </div>
 			    </div>
 			    <sec:authentication property="principal.username" var="utenteInPagina"/>
@@ -66,22 +68,23 @@
 			  <div class="container px-4 py-5" id="featured-3">
 			    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon bg-danger bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
-			        <h2>Visualizza acquisti effettuati</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="${pageContext.request.contextPath}/acquisto/listaacquisti/${utenteInPagina}" class="icon-link">
+			        <h2>Lista acquisti</h2>
+			        <p>Accedi alla lista degli acquisti effettuati.</p>
+			        <a href="${pageContext.request.contextPath}/acquisto" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+			          
 			        </a>
 			      </div>
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon bg-danger bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
 			        <h2>Gestione Annunci</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <p>Da qui puoi visualizzare , modificare o rimuovere i tuoi annunci inseriti.</p>
 			        
 			        <a href="${pageContext.request.contextPath}/annuncio/listaannunci/${utenteInPagina}" class="icon-link">
 			          Vai alla funzionalità
@@ -89,16 +92,21 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
+			      
+			      
+			      <sec:authorize access="hasRole('ADMIN')">
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon bg-danger bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
-			        <h2>Ricarica credito</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="${pageContext.request.contextPath}/utente/ricarica/${utenteInPagina}" class="icon-link">
-			          Vai alla funzionalità
+			        <h2>Gestione Utenze</h2>
+			        <p>Solo se sei autorizzato puoi accedere in questa area . Gestisci gli utenti registrati ed abilitali alle varie funzionalità</p>
+			        <a href="${pageContext.request.contextPath}/utente/search" class="icon-link">
+			          "Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
+			      </sec:authorize>
+			      
 			      </div>
 			    </div>
 			  </div>

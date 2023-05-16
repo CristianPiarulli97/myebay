@@ -18,7 +18,8 @@
 					  <div class="card-header">Oooops......</div>
 					  <div class="card-body text-danger">
 					    <h5 class="card-title">Piccolo Problemino</h5>
-					    <p class="card-text">Abbiamo avuto un piccolo problemino... Ci scusiamo per l'inconveniente.</p>
+					    <p class="card-text">Abbiamo avuto un piccolo problemino... Ci scusiamo per l'inconveniente. 
+					       KEEP CALM !! </p>
 					    
 					    <!-- dettaglio -->
 				    	<p>

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,5 +87,12 @@ public class AcquistoServiceImpl implements AcquistoService {
 		
 		return (List<Acquisto>) acquistoRepository.findAll();
 	}
+
+	@Override
+	public List<Acquisto> cercaPerUtente_Username() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			return acquistoRepository.findAllByUtente_Username(auth.getName());
+	}
+
 
 }

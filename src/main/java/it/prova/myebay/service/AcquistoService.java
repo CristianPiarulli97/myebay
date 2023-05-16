@@ -13,4 +13,6 @@ public interface AcquistoService {
 	public Acquisto caricaSingoloElemento(Long id);
 	
 	public void registraAcquisto (Long idAnnuncio);
+
+	public List<Acquisto> cercaPerUtente_Username();
 }

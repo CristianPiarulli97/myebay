@@ -1,7 +1,9 @@
 package it.prova.myebay.service;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -10,8 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.prova.myebay.model.Ruolo;
 import it.prova.myebay.model.StatoUtente;
 import it.prova.myebay.model.Utente;
+import it.prova.myebay.repository.RuoloRepository;
 import it.prova.myebay.repository.UtenteRepository;
 
 @Service
@@ -24,6 +28,9 @@ public class UtenteServiceImpl implements UtenteService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@Autowired
+	private RuoloRepository ruoloRepository;
+	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Utente> listAll() {
@@ -88,7 +95,6 @@ public class UtenteServiceImpl implements UtenteService {
 	public Utente findByUsernameAndPassword(String username, String password) {
 		return repository.findByUsernameAndPassword(username, password);
 	}
-
 	
 	@Override
 	@Transactional
@@ -123,11 +129,22 @@ public class UtenteServiceImpl implements UtenteService {
 			if (utenteInstance == null) {
 				return false;
 			}
-
 			return utenteInstance.getRuoli().size() > 0;
-
 		}
 		return false;
 	}
 	
+	@Override
+	@Transactional
+	public void registrati(Utente utenteInstance) {
+		utenteInstance.setStato(StatoUtente.CREATO);
+		Set<Ruolo> ruoliUtente = new HashSet<>();
+		ruoliUtente.add(ruoloRepository.findByDescrizioneAndCodice("Classic User", "ROLE_CLASSIC_USER"));
+		utenteInstance.setRuoli(ruoliUtente);
+		utenteInstance.setPassword(passwordEncoder.encode(utenteInstance.getPassword()));
+		utenteInstance.setDateCreated(LocalDate.now());
+		repository.save(utenteInstance);
+		
+		
+	}
 }

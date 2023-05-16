@@ -50,4 +50,7 @@
     text-align: center;
     
   }
+  .card-body {
+   background-color: #f2f2f2;
+}
   

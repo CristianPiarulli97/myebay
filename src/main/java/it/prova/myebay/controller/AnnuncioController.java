@@ -40,7 +40,7 @@ public class AnnuncioController {
 	public ModelAndView listAllAnnunci() {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("annuncio_list_attr",
-				AnnuncioDTO.createAnnuncioDTOListFromModelList(annuncioService.listAllElements(), false));
+				AnnuncioDTO.createAnnuncioDTOListFromModelList(annuncioService.listAll(), false));
 		mv.setViewName("annuncio/list");
 		return mv;
 	}
@@ -72,11 +72,12 @@ public class AnnuncioController {
 	public String save(@Validated @ModelAttribute("insert_annuncio_attr") AnnuncioDTO annuncioDTO, BindingResult result,
 			Model model, RedirectAttributes redirectAttrs) {
 
-		if (result.hasErrors()) {
-			model.addAttribute("categorie_totali_attr",
-					CategoriaDTO.createCategoriaDTOListFromModelList(categoriaService.listAll()));
-			return "annuncio/insert";
-		}
+//		if (result.hasErrors()) {
+//			model.addAttribute("categorie_totali_attr",
+//					CategoriaDTO.createCategoriaDTOListFromModelList(categoriaService.listAll()));
+//			return "annuncio/insert";
+//		}
+		
 		try {
 			annuncioService.inserisciNuovo(annuncioDTO.buildAnnuncioModel(true, true));
 			redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
@@ -85,7 +86,6 @@ public class AnnuncioController {
 			return "redirect:/annuncio";
 		}
 		return "redirect:/annuncio";
-
 	}
 
 	@GetMapping("/show/{idAnnuncio}")

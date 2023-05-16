@@ -58,4 +58,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+ 
+}
+ .card-body {
+   background-color: red;
 }

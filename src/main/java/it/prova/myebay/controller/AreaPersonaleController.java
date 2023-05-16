@@ -19,12 +19,14 @@ public class AreaPersonaleController {
 	@Autowired
 	private UtenteService utenteService;
 	
-	@GetMapping(value ="/preparereareapersonale")
-	public String cambioPassword(HttpServletRequest request,HttpServletResponse response , Model model) {
+	@GetMapping(value ="/preparereareapersonale/{utenteInPagina}")
+	public String accessoAreaPersolnale(HttpServletRequest request,HttpServletResponse response , Model model) {
 		if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
 		model.addAttribute("area_personale_attr");
-		return "areapersonale";
+		return "utente/areapersonale";
 		}
 	return "index";	
 	}
 }
+
+

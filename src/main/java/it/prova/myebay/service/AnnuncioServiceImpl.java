@@ -3,7 +3,6 @@ package it.prova.myebay.service;
 import java.time.LocalDate;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -14,32 +13,37 @@ import it.prova.myebay.exception.UtenteNonTrovatoException;
 import it.prova.myebay.model.Annuncio;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.repository.AnnuncioRepository;
-@Service
-public class AnnuncioServiceImpl implements AnnuncioService {
 
+
+@Service
+public class AnnuncioServiceImpl implements AnnuncioService{
+
+	
 	@Autowired
-	private AnnuncioRepository repository;
+	private AnnuncioRepository annuncioRepository;
 	
 	@Autowired
 	private UtenteService utenteService;
 	
-	@Transactional
-	public List<Annuncio> listAllElements() {
-		return (List<Annuncio>) repository.findAll();
+	@Override
+	@Transactional(readOnly = true)
+	public List<Annuncio> listAll() {
+		return (List<Annuncio>) annuncioRepository.findAll();
 	}
 
-	@Transactional
+	@Override
+	@Transactional(readOnly = true)
 	public Annuncio caricaSingoloElemento(Long id) {
-		return repository.findById(id).orElse(null);
-
+		return annuncioRepository.findById(id).orElse(null);
 	}
 
-	@Transactional
-	public Annuncio caricaSingoloElementoEager(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	@Transactional(readOnly = true)
+	public Annuncio caricaSingoloElementoConCategorie(Long id) {
+		return annuncioRepository.findByIdConCategorie(id).orElse(null);
 	}
 
+	@Override
 	@Transactional
 	public void aggiorna(Annuncio annuncioInstance) {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -54,10 +58,10 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 		annuncioInstance.setAperto(true);
 		annuncioInstance.setDataCreazione(LocalDate.now());
 		annuncioInstance.setUtente(utenteFromDb);
-		repository.save(annuncioInstance);
-		
+		annuncioRepository.save(annuncioInstance);
 	}
 
+	@Override
 	@Transactional
 	public void inserisciNuovo(Annuncio annuncioInstance) {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -69,38 +73,42 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 		annuncioInstance.setUtente(utenteFromDb);
 		annuncioInstance.setAperto(true);
 		annuncioInstance.setDataCreazione(LocalDate.now());
-		repository.save(annuncioInstance);	
+		annuncioRepository.save(annuncioInstance);
 	}
 
+	@Override
 	@Transactional
-	public void rimuovi(Long idAnnuncioToDelete) {
-		repository.deleteById(idAnnuncioToDelete);;
-		
+	public void rimuovi(Long idAnnuncio) {
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		Utente utenteFromDb = utenteService.findByUsername(username);
+		Annuncio annuncioFromDB= this.caricaSingoloElemento(idAnnuncio);
+		if (utenteFromDb == null)
+			throw new UtenteNonTrovatoException();
+		if (!annuncioFromDB.isAperto()) {
+			throw new AnnuncioChiusoException();
+		}
+		if (annuncioFromDB.getUtente() != utenteFromDb) {
+			throw new RuntimeException();
+		}
+		annuncioRepository.deleteById(idAnnuncio);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Annuncio> findByExampleRicerca(Annuncio example) {
+		return annuncioRepository.findByExampleRicerca(example);
+	}
 
 	@Override
 	public Annuncio caricaElementoConUtente(Long id) {
-		return repository.findByIdConUtente(id).orElse(null);
-	}
-	
-	@Transactional(readOnly = true)
-	public List<Annuncio> findByExampleRicerca(Annuncio example) {
-		return repository.findByExampleRicerca(example);
+		return annuncioRepository.findByIdConUtente(id).orElse(null);
 	}
 
-	@Transactional(readOnly = true)
-	public Annuncio caricaSingoloElementoConCategorie(Long id) {
-		return repository.findByIdConCategorie(id).orElse(null);
-	}
-
-	
 	@Override
 	@Transactional(readOnly = true)
 	public List<Annuncio> gestioneAnnunci(String username) {
 		
-		return repository.findAllByUtente_Username(username);
+		return annuncioRepository.findAllByUtente_Username(username);
 	}
-	
 
 }

@@ -17,7 +17,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/home">Home</a></li>
+              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/annuncio/search">Homeee</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/regista/search">Ricerca Registi</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/regista/insert">Inserisci Regista</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/film/search">Ricerca Film</a></li>
@@ -35,21 +35,14 @@
 		   </sec:authorize>
         </ul>
         
-    
+            <div class="col-md-3 text-end">
+  				<p class="navbar-text">
+   					     <a href="${pageContext.request.contextPath}/login">Login (accedi)</a>
+  				</p>
+			</div>
         
       </div>
-      <sec:authorize access="isAuthenticated()">
-      <div class="col-md-3 text-end">
-  				<p class="navbar-text">
-   					     <a href="${pageContext.request.contextPath}/areaPersonaleController/prepareareapersonale">Area Personale</a>
-  				</p>
-			</div>      
-	      <div class="col-md-3 text-end">
-	        <p class="navbar-text">Utente: <sec:authentication property="name"/> (${userInfo.nome } ${userInfo.cognome })
-	    	 <a href="${pageContext.request.contextPath}/logout">Logout</a>    	 
-	      </div>  
-	      	
-      </sec:authorize>
+      
     </div>
   </nav>
   

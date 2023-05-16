@@ -2,7 +2,7 @@ package it.prova.myebay.repository;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+
 
 import it.prova.myebay.model.Annuncio;
 

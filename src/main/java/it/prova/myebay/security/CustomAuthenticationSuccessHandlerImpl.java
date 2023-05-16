@@ -30,8 +30,9 @@ public class CustomAuthenticationSuccessHandlerImpl implements AuthenticationSuc
 		UtenteDTO utenteParziale = new UtenteDTO();
 		utenteParziale.setNome(utenteFromDb.getNome());
 		utenteParziale.setCognome(utenteFromDb.getCognome());
+		utenteParziale.setUsername(utenteFromDb.getUsername());
 		request.getSession().setAttribute("userInfo", utenteParziale);
-		response.sendRedirect("areapersonale");
+		response.sendRedirect("utente/areapersonale");
 
 	}
 

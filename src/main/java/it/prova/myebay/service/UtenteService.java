@@ -30,4 +30,6 @@ public interface UtenteService {
 
 	boolean isAutenticato();
 	
+	public void registrati(Utente utenteInstance);
+	
 }

@@ -71,9 +71,7 @@
 								</c:forEach>
 							</ul>
 						</dd>
-
 					</dl>
-
 				</div>
 
 				<div class='card-footer'>
@@ -85,21 +83,21 @@
 						method="post">
 						<input type="hidden" value="${show_annuncio_attr.id}" name="idAnnuncio"
 							id="idAnnuncio">
-						<button type="submit" name="submit" id="submit"
+						<button  style='width: 130px;' type="submit" name="submit" id="submit"
 							class="btn btn-danger">Compra</button>
 							
 							<a
-						href="${pageContext.request.contextPath}/annuncio"
-						class='btn btn-outline-secondary' style='width: 80px;'> <i
-						class='fa fa-chevron-left'></i> Back
+						href="${pageContext.request.contextPath}/annuncio/"
+						class='btn btn-outline-secondary' style='width: 130px;'> <i
+						class='fa fa-chevron-left'></i> Indietro
 					</a>
 							</form>
 							</c:when>
 							<c:otherwise>
 					<a
-						href="${pageContext.request.contextPath}/annuncio"
-						class='btn btn-outline-secondary' style='width: 80px;'> <i
-						class='fa fa-chevron-left'></i> Back
+						href="${pageContext.request.contextPath}/annuncio/"
+						class='btn btn-outline-secondary' style='width: 130px;'> <i
+						class='fa fa-chevron-left'></i> Indietro
 					</a>
 					</c:otherwise>
 					 </c:choose>
